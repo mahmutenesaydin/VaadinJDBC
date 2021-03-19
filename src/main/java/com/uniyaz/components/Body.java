@@ -39,10 +39,6 @@ public class Body extends HorizontalSplitPanel {
         setFirstComponent(sideBar);
         firstUi.setSideBar(sideBar);
 
-
-
-
-
 //        ContentLayout contentLayout = new ContentLayout();
 //        setSecondComponent(contentLayout);
 //        FirstUi firstUi = (FirstUi) UI.getCurrent();

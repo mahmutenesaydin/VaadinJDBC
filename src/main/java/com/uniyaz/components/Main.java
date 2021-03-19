@@ -8,9 +8,9 @@ import com.vaadin.ui.themes.ValoTheme;
  */
 public class Main extends VerticalLayout {
 
-    public Main() {
+    public Main()
+    {
         setSizeFull();
-
         buildLayout();
     }
 
@@ -30,3 +30,7 @@ public class Main extends VerticalLayout {
         setExpandRatio(footer, 0.5f);
     }
 }
+
+//combobox, setITemCaptoionMode
+
+//cmb.addItem(category)

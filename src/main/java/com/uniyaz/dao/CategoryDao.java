@@ -12,17 +12,17 @@ public class CategoryDao {
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
 
-    static final String driverName="com.mysql.jdbc.Driver";
+    static final String driverName = "com.mysql.jdbc.Driver";
     static final String url = "jdbc:mysql://localhost/vaadinJDBC?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey";
-    static final String userName="root";
-    static final String password="12345";
+    static final String userName = "root";
+    static final String password = "12345";
 
     public void addCategory(String categoryName) {
         try {
             connection = DbOperations.getConnection();
-            String sql = "Insert into Category(categoryName) values(?)";
+            String sql = "Insert into Category(CATEGORY_NAME) values(?)";
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, categoryName);
+            preparedStatement.setString(1,  categoryName);
             preparedStatement.executeUpdate();
         } catch (ClassNotFoundException exception) {
             exception.printStackTrace();
@@ -47,8 +47,8 @@ public class CategoryDao {
 
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("categoryName");
+                int id = resultSet.getInt("ID");
+                String name = resultSet.getString("CATEGORY_NAME");
 
                 Category category = new Category();
                 category.setId(id);
@@ -61,31 +61,29 @@ public class CategoryDao {
             e.printStackTrace();
         }
         return categoryList;
-
-
-        //        List<Category> categoryList = new ArrayList<>();
-//        try {
-//            connection = DbOperations.getConnection();
-//            String sql = "select * from category";
-//            ResultSet resultSet = preparedStatement.executeQuery(sql);
-//            while (resultSet.next()) {
-//                int id = resultSet.getInt("id");
-//                String name = resultSet.getString("categoryName");
 //
-//                Category category = new Category();
-//                category.setId(id);
-//                category.setCategoryName(name);
-//                categoryList.add(category);
-//            }
-//        } catch (SQLException throwables) {
-//            throwables.printStackTrace();
-//        } catch (ClassNotFoundException exception) {
-//            exception.printStackTrace();
-//        }
-//        return categoryList;
-//    }
+////
+//       List<Category> categoryList = new ArrayList<>();
+//       try {
+//           connection = DbOperations.getConnection();
+//           String sql = "select * from category";
+//           ResultSet resultSet = preparedStatement.executeQuery(sql);
+//           while (resultSet.next()) {
+//               int id = resultSet.getInt("id");
+//               String name = resultSet.getString("categoryName");
+//
+//               Category category = new Category();
+//               category.setId(id);
+//               category.setCategoryName(name);
+//               categoryList.add(category);
+//           }
+//       } catch (SQLException throwables) {
+//           throwables.printStackTrace();
+//       } catch (ClassNotFoundException exception) {
+//           exception.printStackTrace();
+//       }
+//       return categoryList;
     }
-
 
     public void deleteCategory(int id) {
 
@@ -95,18 +93,15 @@ public class CategoryDao {
             e.printStackTrace();
         }
 
-        String sql = "DELETE FROM Category WHERE id ="+id;
+        String sql = "DELETE FROM Category WHERE id =" + id;
         sql = String.format(sql, id);
 
         try (
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost/vaadinJDBC?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=Turkey", "root", "12345");
                 PreparedStatement preparedStatement = con.prepareStatement(sql);
-        )
-        {
+        ) {
             preparedStatement.executeUpdate();
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

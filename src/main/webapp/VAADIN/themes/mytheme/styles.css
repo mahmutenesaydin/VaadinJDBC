@@ -19,6 +19,12 @@
  * @group util
  */
 
+.v-verticallayout, .v-horizontallayout{
+	border:1px solid crimson; !important;
+	padding: 5px; !important;
+	margin: 5px; !important;
+}
+
 @-webkit-keyframes valo-animate-in-fade {
 		0% {
 		opacity: 0;
